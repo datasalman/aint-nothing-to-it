@@ -1,0 +1,120 @@
+/* General Reset & Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A nice modern font stack */
+    margin: 0; /* Remove default browser margins */
+    padding: 0; /* Remove default browser padding */
+    background: linear-gradient(135deg, #2c003e, #ff0055); /* Gritty Purple to Pink gradient */
+    color: #f0f0f0; /* Light text color for dark background */
+    min-height: 100vh; /* Make sure background covers the whole viewport height */
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.2); /* Slight dark overlay for header */
+    border-bottom: 2px solid #ff0055; /* Pink accent */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em; /* Larger font for the main title */
+    color: #f0f0f0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Adds a little depth */
+}
+
+#auth-container {
+    padding-top: 10px;
+}
+
+#google-signin-btn {
+    background-color: #4285F4; /* Google's blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+#google-signin-btn:hover {
+    background-color: #357ae8;
+}
+
+main#week-container {
+    display: flex; /* This will lay out our day columns side-by-side */
+    flex-wrap: wrap; /* Allows columns to wrap if not enough space */
+    justify-content: space-around; /* Distribute space around columns */
+    padding: 20px;
+    flex-grow: 1; /* Allows main to take up available vertical space */
+}
+
+.day-column {
+    background-color: rgba(255, 255, 255, 0.05); /* Very subtle light background for columns */
+    border: 1px solid #ff005580; /* Semi-transparent pink border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px;
+    margin: 10px;
+    min-width: 250px; /* Minimum width for each day column */
+    flex: 1; /* Allows columns to grow and share space */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* A bit of shadow for depth */
+}
+
+.day-column h2 {
+    text-align: center;
+    color: #f0f0f0;
+    border-bottom: 1px solid #ff0055;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.todo-form {
+    display: flex; /* Align input and button in a row */
+    margin-bottom: 15px;
+}
+
+.todo-input {
+    flex-grow: 1; /* Input field takes up most of the space */
+    padding: 10px;
+    border: 1px solid #ff0055;
+    border-radius: 4px 0 0 4px; /* Rounded corners only on the left */
+    background-color: rgba(0,0,0,0.2);
+    color: #f0f0f0;
+}
+
+.todo-input::placeholder {
+    color: #aaa;
+}
+
+.add-btn {
+    padding: 10px 15px;
+    background-color: #ff0055; /* Pink button */
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0; /* Rounded corners only on the right */
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #c40043; /* Darker pink on hover */
+}
+
+.todo-list {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0;
+}
+
+/* We'll add styles for .todo-list li (list items) later with JavaScript */
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2); /* Similar to header */
+    border-top: 1px solid #2c003e; /* Purple accent */
+    font-size: 0.9em;
+    margin-top: auto; /* Pushes footer to the bottom if content is short */
+}
