@@ -1,35 +1,35 @@
-// Wait for the HTML document to be fully loaded before running JavaScript
 document.addEventListener('DOMContentLoaded', () => {
-    // --- MONDAY ---
-    // 1. Get references to the HTML elements for Monday
-    const mondayForm = document.querySelector('#monday .todo-form');
-    const mondayInput = document.querySelector('#monday .todo-input');
-    const mondayList = document.querySelector('#monday .todo-list');
+    // Get all the day columns
+    const dayColumns = document.querySelectorAll('.day-column'); // This gets a list of all elements with class 'day-column'
 
-    // 2. Listen for when Monday's form is submitted (e.g., button click or pressing Enter)
-    mondayForm.addEventListener('submit', function(event) {
-        // 3. When the form is submitted, do the following:
-        event.preventDefault(); // Prevent the default form submission which reloads the page
+    // Loop through each day column
+    dayColumns.forEach(column => {
+        // For each column, find its specific form, input, and list
+        const todoForm = column.querySelector('.todo-form');
+        const todoInput = column.querySelector('.todo-input');
+        const todoList = column.querySelector('.todo-list');
+        const dayName = column.querySelector('h2').textContent.split(' ')[0]; // Get the day name like "Monday"
 
-        // Get the text from the input field (and remove any extra spaces)
-        const taskText = mondayInput.value.trim();
+        if (todoForm && todoInput && todoList) { // Make sure we found all elements
+            todoForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent page reload
 
-        // Check if the taskText is not empty
-        if (taskText !== "") {
-            // Create a new list item (<li>) element
-            const newTask = document.createElement('li');
-            newTask.textContent = taskText; // Set the text of the list item
+                const taskText = todoInput.value.trim();
 
-            // Add some basic styling or classes later if needed
-            // For now, just add it to Monday's list
-            mondayList.appendChild(newTask);
+                if (taskText !== "") {
+                    const newTask = document.createElement('li');
+                    newTask.textContent = taskText;
+                    // You could add classes or other attributes to newTask here if needed
 
-            // Clear the input field for the next task
-            mondayInput.value = "";
-        } else {
-            alert("Hey, you gotta write something for the task! 📝");
+                    todoList.appendChild(newTask);
+                    todoInput.value = ""; // Clear the input
+                } else {
+                    // You could make this more specific, e.g., "Please enter a task for [Day Name]!"
+                    alert(`Hey, you gotta write something for the task on ${dayName}! 📝`);
+                }
+            });
         }
     });
 
-    // We'll add functionality for other days and features later!
+    // Next up: Marking tasks as complete and deleting them!
 });
